@@ -11,7 +11,7 @@ import SwiftUI
 struct BeaconBoosterApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BeaconView()
         }
     }
 }

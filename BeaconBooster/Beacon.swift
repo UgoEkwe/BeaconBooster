@@ -8,10 +8,11 @@
 import Foundation
 import CoreLocation
 
+/// Represents a beacon detected by the app.
 struct Beacon: Identifiable {
-    let id: UUID
+    var id: UUID
     let major: Int
     let minor: Int
     let proximity: CLProximity
-    let accuracy: Double
+    let distance: Double
 }
