@@ -28,11 +28,15 @@ struct iBeaconTab: View {
             }
             
             List(manager.detectedBeacons) { beacon in
-                VStack {
+                VStack(alignment: .leading) {
                     Text("UUID: \(beacon.id.uuidString)")
                         .foregroundStyle(.green)
                     Text("Proximity: \(beacon.proximity.description)")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                     Text("Distance: \(String(format: "%.2f meters", beacon.distance))")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
                 .padding()
             }

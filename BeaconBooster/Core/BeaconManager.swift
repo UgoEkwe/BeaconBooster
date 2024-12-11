@@ -31,7 +31,7 @@ class BeaconManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         // Seems to be the correct UUID
         let uuids = [
-            "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
+            "D546DF97-4757-47EF-BE09-3E2DCBDD0C77"
         ]
         
         // create and monitor regions for each UUID
