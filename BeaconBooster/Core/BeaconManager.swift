@@ -12,14 +12,14 @@ import CoreLocation
 /* Manages beacon proximity readings using Core Location. Scans for multiple beacon UUIDs.
    Could extend functionality by letting users add new UUIDs dynamically. Could improve error handling. */
 class BeaconManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    private var locationManager: CLLocationManager!
+    private var locationManager: CLLocationManager
     
     @Published var detectedBeacons: [Beacon] = []
     @Published var authorizationStatus: CLAuthorizationStatus?
     
     override init() {
-        super.init()
         locationManager = CLLocationManager()
+        super.init()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
     }
@@ -27,23 +27,16 @@ class BeaconManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     /// Creates and scans  regions using set UUIDs
     func startScanning() {
         guard CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self),
-              CLLocationManager.isRangingAvailable() else {
-            print("Beacon monitoring or ranging is not available on this device.")
-            return
-        }
+              CLLocationManager.isRangingAvailable() else { return }
         
-        // Either one seems to work.
+        // Seems to be the correct UUID
         let uuids = [
-            "FDA50693-A4E2-4FB1-AFCF-C6EB07647825",
-            "D546DF97-4757-47EF-BE09-3E2DCBDD0C77"
+            "FDA50693-A4E2-4FB1-AFCF-C6EB07647825"
         ]
         
         // create and monitor regions for each UUID
         for uuidString in uuids {
-            guard let uuid = UUID(uuidString: uuidString) else {
-                print("Invalid UUID: \(uuidString)")
-                continue
-            }
+            guard let uuid = UUID(uuidString: uuidString) else { continue }
             let beaconRegion = CLBeaconRegion(uuid: uuid, identifier: uuidString)
             locationManager.startMonitoring(for: beaconRegion)
             locationManager.startRangingBeacons(satisfying: CLBeaconIdentityConstraint(uuid: beaconRegion.uuid))
@@ -54,13 +47,11 @@ class BeaconManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         authorizationStatus = status
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             startScanning()
-        } else {
-            print("Authorization denied: \(status)")
         }
     }
     
     /* Manages beacon range updates and calculates distance using its  rssi values
-     Adds new beacon to the array or update its proximity values if it exists */
+     Adds new beacon to the array or update its values if it exists */
     func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
         for beacon in beacons {
             let updatedBeacon = Beacon(
@@ -68,7 +59,7 @@ class BeaconManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 major: beacon.major.intValue,
                 minor: beacon.minor.intValue,
                 proximity: beacon.proximity,
-                distance: calculateDistance(fromRSSI: beacon.rssi)
+                distance: beacon.rssi.distanceFromRSSI()
             )
             
             if let index = detectedBeacons.firstIndex(where: { $0.id == updatedBeacon.id }) {
@@ -77,13 +68,6 @@ class BeaconManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 detectedBeacons.append(updatedBeacon)
             }
         }
-    }
-    
-    /// Calculates distance from RSSI
-    private func calculateDistance(fromRSSI rssi: Int) -> Double {
-        guard rssi != 0 else { return -1.0 }
-        let ratio = Double(rssi) / Double(-59) // need a more accurate calibration value
-        return pow(10.0, -ratio)
     }
 }
 

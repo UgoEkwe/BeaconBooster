@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-/// Represents a beacon detected by the app.
+/// Represents an ibeacon detected by the app.
 struct Beacon: Identifiable {
     var id: UUID
     let major: Int
