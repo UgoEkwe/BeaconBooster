@@ -11,7 +11,7 @@
 		7B515E2D2D0825D100C08390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B515E2C2D0825D100C08390 /* Assets.xcassets */; };
 		7B515E302D0825D100C08390 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7B515E2F2D0825D100C08390 /* Preview Assets.xcassets */; };
 		7B515E372D0825F300C08390 /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B515E362D0825F300C08390 /* Beacon.swift */; };
-		7B515E3A2D0828F400C08390 /* ProximityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B515E392D0828F400C08390 /* ProximityManager.swift */; };
+		7B515E3A2D0828F400C08390 /* BeaconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B515E392D0828F400C08390 /* BeaconManager.swift */; };
 		7B515E3C2D08B89700C08390 /* BeaconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B515E3B2D08B89700C08390 /* BeaconView.swift */; };
 /* End PBXBuildFile section */
 
@@ -22,7 +22,7 @@
 		7B515E2F2D0825D100C08390 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7B515E362D0825F300C08390 /* Beacon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beacon.swift; sourceTree = "<group>"; };
 		7B515E382D08273900C08390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		7B515E392D0828F400C08390 /* ProximityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProximityManager.swift; sourceTree = "<group>"; };
+		7B515E392D0828F400C08390 /* BeaconManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconManager.swift; sourceTree = "<group>"; };
 		7B515E3B2D08B89700C08390 /* BeaconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeaconView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +59,7 @@
 				7B515E382D08273900C08390 /* Info.plist */,
 				7B515E282D0825CF00C08390 /* BeaconBoosterApp.swift */,
 				7B515E362D0825F300C08390 /* Beacon.swift */,
-				7B515E392D0828F400C08390 /* ProximityManager.swift */,
+				7B515E392D0828F400C08390 /* BeaconManager.swift */,
 				7B515E3B2D08B89700C08390 /* BeaconView.swift */,
 				7B515E2C2D0825D100C08390 /* Assets.xcassets */,
 				7B515E2E2D0825D100C08390 /* Preview Content */,
@@ -145,7 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B515E3A2D0828F400C08390 /* ProximityManager.swift in Sources */,
+				7B515E3A2D0828F400C08390 /* BeaconManager.swift in Sources */,
 				7B515E292D0825CF00C08390 /* BeaconBoosterApp.swift in Sources */,
 				7B515E3C2D08B89700C08390 /* BeaconView.swift in Sources */,
 				7B515E372D0825F300C08390 /* Beacon.swift in Sources */,

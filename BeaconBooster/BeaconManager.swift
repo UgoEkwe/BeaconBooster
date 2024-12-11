@@ -1,5 +1,5 @@
 //
-//  ProximityManager.swift
+//  BeaconManager.swift
 //  BeaconBooster
 //
 //  Created by Ugonna Oparaochaekwe on 12/10/24.
@@ -11,7 +11,7 @@ import CoreLocation
 
 /* Manages beacon proximity readings using Core Location. Scans for multiple beacon UUIDs.
    Could extend functionality by letting users add new UUIDs dynamically. Could improve error handling. */
-class ProximityManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+class BeaconManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager: CLLocationManager!
     
     @Published var detectedBeacons: [Beacon] = []

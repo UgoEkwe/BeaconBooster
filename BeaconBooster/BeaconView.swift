@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BeaconView: View {
-    @StateObject private var manager = ProximityManager()
+    @StateObject private var manager = BeaconManager()
     
     var body: some View {
         VStack {
